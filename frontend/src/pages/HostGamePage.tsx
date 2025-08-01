@@ -72,7 +72,7 @@ const HostGamePage: React.FC = () => {
       socketRef.current.disconnect();
     }
 
-    const socket = io("http://localhost:5004", {
+    const socket = io("https://deployed-gameshow.onrender.com", {
       forceNew: true,
       reconnection: true,
       reconnectionAttempts: 5,
@@ -324,7 +324,7 @@ const HostGamePage: React.FC = () => {
           error.message.includes("ERR_NETWORK")
         ) {
           setControlMessage(
-            "Cannot connect to server. Make sure the server is running on http://localhost:5004"
+            "Cannot connect to server. Make sure the server is running on https://deployed-gameshow.onrender.com"
           );
         } else {
           setControlMessage(`Error: ${error.message}`);
