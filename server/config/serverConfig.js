@@ -10,7 +10,7 @@ export const setupServer = () => {
   const corsOptions = {
     origin: "https://deployed-game-show.vercel.app",
     methods: ["GET", "POST"],
-    credentials: true, // <- optional but useful
+    credentials: true,
   };
   const io = new Server(server, {
     cors: corsOptions,
@@ -18,7 +18,7 @@ export const setupServer = () => {
 
   // Middleware
   app.use(helmet());
-  app.use(cors());
+  app.use(cors(corsOptions)); // ✅ use same CORS options as Socket.IO
   app.use(json());
 
   return { app, server, io };
